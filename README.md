@@ -17,7 +17,7 @@ Aplicación React Native que consume el API de Toolbox y muestra carruseles (thu
 yarn install
 ```
 
-### iOS (incluye soporte de video)
+### iOS
 
 ```bash
 cd ios && pod install && cd ..
@@ -47,20 +47,21 @@ yarn test
 ```
 src/
 ├── domain/           # Capa de dominio
-│   ├── entities/     # AuthToken, Carousel, CarouselItem
-│   ├── repositories/ # Contratos (AuthRepository, CarouselRepository)
+│   ├── entities/     # AuthToken, Carousel, CarouselItem (+ __tests__/Carousel.test.js)
 │   └── useCases/     # LoginUseCase, GetCarouselsUseCase
 ├── data/             # Capa de datos
-│   ├── dataSources/  # API remoto, almacenamiento token
-│   ├── mappers/      # API → dominio
-│   ├── repositories/ # Implementación de repositorios
-│   └── utils/        # JWT (expiración)
+│   ├── dataSources/  # ApiConstants, RemoteAuth, RemoteCarousel, StorageAuth
+│   ├── mappers/      # CarouselMapper (+ __tests__/CarouselMapper.test.js)
+│   ├── repositories/ # AuthRepositoryImpl, CarouselRepositoryImpl
+│   └── utils/        # jwtUtils (expiración JWT)
 ├── di/               # Inyección de dependencias (container.js)
-├── store/            # Redux: store y slices (auth)
-└── presentation/    # Capa de presentación
-    ├── components/  # CarouselThumb, CarouselPoster, VideoModal
-    ├── screens/     # LoginScreen, CarouselsScreen
-    └── styles/      # Estilos en archivos .styles.js separados
+├── store/            # Redux: index.js, slices/authSlice.js
+└── presentation/     # Capa de presentación
+    ├── AppContent.js
+    ├── assets/images/   # placeholder.svg
+    ├── components/   # CarouselThumb, CarouselPoster, CarouselSection, VideoModal
+    ├── screens/      # LoginScreen, CarouselsScreen
+    └── styles/       # Estilos en archivos .styles.js por componente/pantalla
 ```
 
 ## Funcionalidades
@@ -86,11 +87,3 @@ src/
 - Redux para estado global (auth: token, tipo, sub; selectIsLoggedIn con validación JWT)
 - Jest para tests unitarios (entidad Carousel y mapper de carruseles)
 
-## Video 
-
-Para habilitar el reproductor de video en el modal:
-
-```bash
-yarn add react-native-video
-cd ios && pod install && cd ..
-```
