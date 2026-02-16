@@ -1,0 +1,4 @@
+<svg width="200" height="140" viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="140" fill="#1e293b"/>
+  <text x="50%" y="50%" dy=".3em" fill="#64748b" text-anchor="middle" font-size="14" font-family="system-ui, sans-serif">Imagen</text>
+</svg>
